@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+class Stack {
+    int n;
+    int* arr;
+    int top;
+
+public:
+    Stack(int size) 
+    {
+        n = size;
+        arr = new int[n];
+        top = -1;
+    }
+
+    ~Stack() {
+        delete[] arr;
+    }
+
+    void push(int a) 
+    {
+        if (top < n - 1) 
+        {
+            top = top + 1;
+            arr[top] = a;
+        } 
+        
+    }
+
+    void pop() 
+    {
+        if (top == -1) 
+        {
+            cout << "Element is not present" << endl;
+        } 
+        else 
+        {
+            cout << "Top element is " << arr[top] << endl;
+            top--;
+        }
+    }
+
+    void printStack() 
+    {
+        if (top == -1) 
+          {
+            for (int i = 0; i <= top; ++i) 
+            {
+                cout << arr[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
+int main() 
+{
+    Stack s(5); 
+    s.push(1);
+    s.push(5);
+    s.push(7);
+    s.push(8);
+    s.push(10);
+    s.printStack();
+    s.pop();
+    s.pop();
+    s.pop();
+    s.printStack();
+    return 0;
+}
